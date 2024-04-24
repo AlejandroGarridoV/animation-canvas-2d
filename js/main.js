@@ -37,18 +37,28 @@ class Circle {
     }
 
     update(context) {
-        // Si el circulo sobre pasa los limites del margen derecho, se mueve a la izquierda
+        // Actualiza la posición del círculo
+        this.posx += this.dx;
+        this.posy += this.dy;
+        
+        // Si el círculo choca con el borde derecho o izquierdo, invierte la dirección horizontal
         if ((this.posx + this.radius) > window_width || (this.posx - this.radius) < 0) {
             this.dx = -this.dx;
         }
-        // Si el circulo sobre pasa los limites del margen inferior, se mueve hacia arriba
+        
+        // Si el círculo choca con el borde superior o inferior, invierte la dirección vertical
         if ((this.posy + this.radius) > window_height || (this.posy - this.radius) < 0) {
             this.dy = -this.dy;
         }
-        this.posx += this.dx;
-        this.posy += this.dy;
+        
+        // Limita la posición del círculo para que no quede fuera de los límites de la ventana
+        this.posx = Math.max(this.radius, Math.min(this.posx, window_width - this.radius));
+        this.posy = Math.max(this.radius, Math.min(this.posy, window_height - this.radius));
+        
+        // Dibuja el círculo en su nueva posición
         this.draw(context);
     }
+    
 }
 
 let arrayCircle = [];
