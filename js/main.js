@@ -69,10 +69,12 @@ for (let i = 0; i < n; i++) {
     let randomX = Math.random() * window_width;
     let randomY = Math.random() * window_height;
     let randomRadius = Math.floor(Math.random() * 100 + 30);
-    let myCircle = new Circle(randomX, randomY, randomRadius, "blue", i + 1, 3);
+    let randomSpeed = Math.random() * (7 - 1) + 1; // Genera un número aleatorio entre 1 y 5
+    let myCircle = new Circle(randomX, randomY, randomRadius, "blue", i + 1, randomSpeed);
     // Agrega el objeto al arreglo
     arrayCircle.push(myCircle);
 }
+
 
 // Función para actualizar y animar los círculos
 let updateCircles = function () {
